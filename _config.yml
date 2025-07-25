@@ -22,7 +22,7 @@ repository               : "academicpages/academicpages.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "./images/IMG_20250726_020852.jpg"
+  avatar           : "/images/IMG_20250726_020852.jpg"
   name             : "Junxi Liu"
   pronouns         : # example: "she/her"  
   bio              : "a undergraduate student from UESTC"
