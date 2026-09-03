@@ -78,13 +78,14 @@ author:
   zhihu            : # Username
 
 # Publication Category - The following the list of publication categories and their headings
+# Order here controls the order of the sections on /publications/.
 publication_category:
+  conferences:
+    title: 'Peer-reviewed'
+  manuscripts:
+    title: 'Preprints'
   books:
     title: 'Books'
-  manuscripts:
-    title: 'Journal Articles'    
-  conferences:
-    title: 'Conference Papers'
 
 # Site Settings
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
