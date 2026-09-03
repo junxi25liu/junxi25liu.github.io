@@ -1,0 +1,447 @@
+/* ==========================================================================
+   CUSTOM THEME LAYER
+   --------------------------------------------------------------------------
+   Personal overrides on top of AcademicPages. This file is imported last in
+   assets/css/main.scss so everything here wins without touching upstream
+   files. Delete the import line to revert to the stock theme.
+   ========================================================================== */
+
+/* --- Palette ------------------------------------------------------------ */
+
+$accent-1: #6d5efc; // indigo
+$accent-2: #00c2b8; // teal
+$accent-3: #ff7a59; // coral
+$accent-4: #ffc94d; // amber
+$ink:      #1f2333;
+
+/* --- Animated gradient bar across the very top --------------------------- */
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  z-index: 999;
+  background: linear-gradient(
+    90deg,
+    $accent-1,
+    $accent-2,
+    $accent-4,
+    $accent-3,
+    $accent-1
+  );
+  background-size: 300% 100%;
+  animation: driftGradient 12s linear infinite;
+}
+
+@keyframes driftGradient {
+  0%   { background-position:   0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* --- Headings: gradient text with a soft underline ---------------------- */
+
+.page__content {
+  h2 {
+    position: relative;
+    display: inline-block;
+    margin-top: 2em;
+    padding-bottom: 0.25em;
+    border-bottom: 0;
+    background: linear-gradient(100deg, $accent-1, $accent-2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 3px;
+      border-radius: 3px;
+      background: linear-gradient(90deg, $accent-1, $accent-2);
+      opacity: 0.28;
+    }
+  }
+
+  h3 {
+    color: $accent-1;
+    font-weight: 700;
+  }
+}
+
+/* --- Links: animated underline instead of a flat colour change ---------- */
+
+.page__content p a,
+.page__content li a {
+  color: #5a49fb;
+  text-decoration: none;
+  background-image: linear-gradient(90deg, $accent-1, $accent-2);
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  background-position: 0 100%;
+  transition: background-size 0.28s ease, color 0.28s ease;
+
+  &:hover {
+    color: $accent-2;
+    background-size: 100% 2px;
+  }
+}
+
+/* --- Sidebar author card ------------------------------------------------ */
+
+.sidebar {
+  .author__avatar img {
+    border-radius: 18px;
+    border: 3px solid transparent;
+    background: linear-gradient(#fff, #fff) padding-box,
+                linear-gradient(135deg, $accent-1, $accent-2, $accent-4) border-box;
+    box-shadow: 0 10px 26px rgba(31, 35, 51, 0.16);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    &:hover {
+      transform: rotate(-2.5deg) scale(1.04);
+    }
+  }
+
+  .author__name {
+    background: linear-gradient(100deg, $accent-1, $accent-2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+  }
+
+  .author__urls {
+    li a {
+      border-radius: 8px;
+      padding: 2px 6px;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+
+      &:hover {
+        background: rgba(109, 94, 252, 0.09);
+        transform: translateX(3px);
+      }
+    }
+  }
+}
+
+/* --- Publication / archive entries become cards ------------------------- */
+
+.archive__item {
+  padding: 1.15em 1.3em;
+  margin-bottom: 1.1em;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid rgba(31, 35, 51, 0.09);
+  box-shadow: 0 2px 10px rgba(31, 35, 51, 0.05);
+  transition: transform 0.26s ease, box-shadow 0.26s ease,
+              border-color 0.26s ease;
+
+  /* coloured spine on the left, revealed on hover */
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, $accent-1, $accent-2);
+    transform: translateX(-4px);
+    transition: transform 0.26s ease;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px rgba(31, 35, 51, 0.12);
+    border-color: rgba(109, 94, 252, 0.28);
+
+    &::before {
+      transform: translateX(0);
+    }
+  }
+}
+
+.archive__item-title {
+  margin-top: 0.2em;
+
+  a {
+    color: $ink;
+    text-decoration: none;
+    transition: color 0.22s ease;
+
+    &:hover {
+      color: $accent-1;
+    }
+  }
+}
+
+/* --- Venue badges ------------------------------------------------------- */
+/* Usage in markdown: <span class="badge badge--acl">ACL 2026</span>        */
+
+.badge {
+  display: inline-block;
+  padding: 0.16em 0.62em;
+  margin-right: 0.3em;
+  border-radius: 999px;
+  font-size: 0.72em;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  color: #fff;
+  vertical-align: 0.12em;
+  white-space: nowrap;
+
+  &--acl       { background: linear-gradient(120deg, #e2445c, #ff7a59); }
+  &--interspeech { background: linear-gradient(120deg, #0f9b8e, #00c2b8); }
+  &--icassp    { background: linear-gradient(120deg, #4059ad, #6d5efc); }
+  &--arxiv     { background: linear-gradient(120deg, #6b7280, #9ca3af); }
+  &--oral      { background: linear-gradient(120deg, #d97706, #ffc94d); }
+}
+
+/* --- News list: timeline with coloured dots ----------------------------- */
+
+.news-list {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0.35em;
+  border-left: 2px dashed rgba(109, 94, 252, 0.26);
+
+  li {
+    position: relative;
+    padding: 0.32em 0 0.32em 1.35em;
+    list-style: none;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: -6px;
+      top: 0.95em;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: $accent-2;
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 2px rgba(0, 194, 184, 0.22);
+      transition: transform 0.22s ease, background-color 0.22s ease;
+    }
+
+    &:hover::before {
+      transform: scale(1.35);
+      background: $accent-3;
+    }
+
+    /* highlight the most recent item */
+    &:first-child::before {
+      background: $accent-3;
+      box-shadow: 0 0 0 2px rgba(255, 122, 89, 0.24);
+      animation: pulseDot 2.4s ease-in-out infinite;
+    }
+  }
+
+  .news-date {
+    font-weight: 700;
+    color: $accent-1;
+    margin-right: 0.4em;
+  }
+}
+
+@keyframes pulseDot {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(255, 122, 89, 0.24); }
+  50%      { box-shadow: 0 0 0 7px rgba(255, 122, 89, 0.05); }
+}
+
+/* --- Paper entries on the homepage ------------------------------------- */
+
+.paper {
+  padding: 1em 1.2em;
+  margin-bottom: 1em;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid rgba(31, 35, 51, 0.09);
+  box-shadow: 0 2px 10px rgba(31, 35, 51, 0.05);
+  transition: transform 0.26s ease, box-shadow 0.26s ease,
+              border-color 0.26s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px rgba(31, 35, 51, 0.12);
+    border-color: rgba(109, 94, 252, 0.28);
+  }
+
+  .paper-title {
+    font-weight: 700;
+    font-size: 1.02em;
+    line-height: 1.4;
+    display: block;
+    margin-bottom: 0.24em;
+  }
+
+  .paper-authors {
+    font-size: 0.9em;
+    color: #4b5164;
+    display: block;
+    margin-bottom: 0.18em;
+  }
+
+  .paper-links {
+    font-size: 0.86em;
+
+    a {
+      display: inline-block;
+      padding: 0.06em 0.5em;
+      margin-right: 0.28em;
+      border-radius: 6px;
+      background: rgba(109, 94, 252, 0.08);
+      text-decoration: none;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+
+      &:hover {
+        background: rgba(109, 94, 252, 0.18);
+        transform: translateY(-1px);
+      }
+    }
+  }
+
+  .paper-note {
+    font-size: 0.88em;
+    color: #5c6178;
+    margin: 0.35em 0 0;
+    font-style: italic;
+  }
+}
+
+/* --- Research interest cards ------------------------------------------- */
+
+.interest-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.85em;
+  margin: 1.1em 0 1.4em;
+}
+
+.interest-card {
+  padding: 0.95em 1.05em;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid rgba(31, 35, 51, 0.09);
+  box-shadow: 0 2px 10px rgba(31, 35, 51, 0.05);
+  transition: transform 0.28s cubic-bezier(0.34, 1.4, 0.64, 1),
+              box-shadow 0.28s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(31, 35, 51, 0.13);
+  }
+
+  .interest-icon {
+    font-size: 1.5em;
+    display: block;
+    margin-bottom: 0.3em;
+  }
+
+  .interest-title {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 0.25em;
+    color: $ink;
+  }
+
+  .interest-body {
+    font-size: 0.9em;
+    color: #4b5164;
+    line-height: 1.55;
+  }
+
+  &:nth-child(3n + 1) { border-top: 3px solid $accent-1; }
+  &:nth-child(3n + 2) { border-top: 3px solid $accent-2; }
+  &:nth-child(3n + 3) { border-top: 3px solid $accent-3; }
+}
+
+/* --- Waveform strip under the intro ------------------------------------ */
+
+.waveform {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 34px;
+  margin: 1.2em 0 0.4em;
+  cursor: crosshair;
+
+  span {
+    flex: 1 1 0;
+    min-width: 2px;
+    border-radius: 3px;
+    background: linear-gradient(180deg, $accent-1, $accent-2);
+    opacity: 0.55;
+    animation: bounceBar 1.5s ease-in-out infinite;
+    transform-origin: bottom;
+    transition: opacity 0.18s ease, height 0.18s ease;
+  }
+}
+
+@keyframes bounceBar {
+  0%, 100% { transform: scaleY(0.35); }
+  50%      { transform: scaleY(1); }
+}
+
+/* --- Footer touch ------------------------------------------------------- */
+
+.page__footer {
+  border-top: 1px solid rgba(31, 35, 51, 0.08);
+}
+
+/* --- Respect reduced-motion preferences -------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  body::before,
+  .news-list li:first-child::before,
+  .waveform span {
+    animation: none;
+  }
+
+  .archive__item,
+  .paper,
+  .interest-card,
+  .sidebar .author__avatar img {
+    transition: none;
+  }
+}
+
+/* --- Dark theme adjustments -------------------------------------------- */
+
+html[data-theme="dark"] {
+  .archive__item,
+  .paper,
+  .interest-card {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+  }
+
+  .archive__item-title a,
+  .paper .paper-title,
+  .interest-card .interest-title {
+    color: #e8e9ef;
+  }
+
+  .paper .paper-authors,
+  .interest-card .interest-body,
+  .paper .paper-note {
+    color: #b9bccb;
+  }
+
+  .sidebar .author__avatar img {
+    background: linear-gradient(#1c1f2b, #1c1f2b) padding-box,
+                linear-gradient(135deg, $accent-1, $accent-2, $accent-4) border-box;
+  }
+}

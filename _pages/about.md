@@ -11,77 +11,92 @@ I am an undergraduate student at the [University of Electronic Science and Techn
 
 My research focuses on audio generation. I am interested in making generative audio models faster, more controllable, and better aligned with what people actually intend to hear.
 
+<div class="waveform" aria-hidden="true"></div>
+
 [Scholar](https://scholar.google.com/citations?user=r9BSOjgAAAAJ&hl=en) / [GitHub](https://github.com/junxi25liu)
 
 <!-- TODO: add Email, CV, and other links once available -->
 
 ## Research Interests
 
-My work centers on audio generation and evaluation, in particular:
-
-**(1) Efficient generation:** reducing the sampling cost of flow- and diffusion-based audio models, so that high-quality audio can be synthesized in one or very few steps;
-
-**(2) Controllable generation and editing:** giving users precise, intent-level control over generated and edited audio;
-
-**(3) Alignment and evaluation:** using reinforcement learning and preference data to align audio generators with human judgement, and building benchmarks that measure whether they actually improved.
+<div class="interest-grid">
+  <div class="interest-card">
+    <span class="interest-icon">&#9889;</span>
+    <span class="interest-title">Efficient generation</span>
+    <span class="interest-body">Cutting the sampling cost of flow- and diffusion-based audio models, so good audio comes out in one or very few steps.</span>
+  </div>
+  <div class="interest-card">
+    <span class="interest-icon">&#127911;</span>
+    <span class="interest-title">Control &amp; editing</span>
+    <span class="interest-body">Giving people precise, intent-level control over what gets generated and how it can be edited afterwards.</span>
+  </div>
+  <div class="interest-card">
+    <span class="interest-icon">&#127919;</span>
+    <span class="interest-title">Alignment &amp; evaluation</span>
+    <span class="interest-body">Using RL and preference data to align generators with human judgement, and benchmarks that check whether it worked.</span>
+  </div>
+</div>
 
 ## News
 
-**[Jun. 2026]** [Audio-Oscar](https://arxiv.org/abs/2606.07397), [MMAE](https://arxiv.org/abs/2606.07229), and [HoliDubber](https://arxiv.org/abs/2606.09098) are released on arXiv.
-
-**[Jun. 2026]** [Resonate](https://arxiv.org/abs/2603.11661) has been accepted by Interspeech 2026.
-
-**[Apr. 2026]** [MeanAudio](https://arxiv.org/abs/2508.06098) has been accepted by ACL 2026 Main.
-
-**[Feb. 2026]** [MOVA](https://arxiv.org/abs/2602.08794) is released on arXiv.
+<ul class="news-list">
+  <li><span class="news-date">Jun. 2026</span> <a href="https://arxiv.org/abs/2606.07397">Audio-Oscar</a>, <a href="https://arxiv.org/abs/2606.07229">MMAE</a>, and <a href="https://arxiv.org/abs/2606.09098">HoliDubber</a> are on arXiv.</li>
+  <li><span class="news-date">Jun. 2026</span> <a href="https://arxiv.org/abs/2603.11661">Resonate</a> is accepted by Interspeech 2026.</li>
+  <li><span class="news-date">Apr. 2026</span> <a href="https://arxiv.org/abs/2508.06098">MeanAudio</a> is accepted by ACL 2026 Main.</li>
+  <li><span class="news-date">Feb. 2026</span> <a href="https://arxiv.org/abs/2602.08794">MOVA</a> is on arXiv.</li>
+</ul>
 
 ## Selected Publications
 
-A full list is available on my [Google Scholar profile](https://scholar.google.com/citations?user=r9BSOjgAAAAJ&hl=en). See also the [Publications](/publications/) page.
+A full list is on my [Google Scholar profile](https://scholar.google.com/citations?user=r9BSOjgAAAAJ&hl=en). See also the [Publications](/publications/) page. <sup>\*</sup> denotes equal contribution.
 
-**[Resonate: Reinforcing Text-to-Audio Generation via Online Feedback from Large Audio Language Models](https://arxiv.org/abs/2603.11661)**  
-Xiquan Li, **Junxi Liu**, Wenxi Chen, Haina Zhu, Ziyang Ma, Xie Chen  
-***Interspeech*, 2026**  
-[paper](https://arxiv.org/abs/2603.11661) / [code](https://github.com/xiquan-li/Resonate) / [demo](https://resonatedemo.github.io/)
+<div class="paper">
+  <span class="badge badge--interspeech">Interspeech 2026</span>
+  <a class="paper-title" href="https://arxiv.org/abs/2603.11661">Resonate: Reinforcing Text-to-Audio Generation via Online Feedback from Large Audio Language Models</a>
+  <span class="paper-authors">Xiquan Li, <strong>Junxi Liu</strong>, Wenxi Chen, Haina Zhu, Ziyang Ma, Xie Chen</span>
+  <span class="paper-links"><a href="https://arxiv.org/abs/2603.11661">paper</a><a href="https://github.com/xiquan-li/Resonate">code</a><a href="https://resonatedemo.github.io/">demo</a></span>
+  <p class="paper-note">A flow-matching text-to-audio model trained with online RL, using large audio language models as the reward source.</p>
+</div>
 
-A flow-matching-based text-to-audio model enhanced with online RL, using large audio language models as the reward source.
+<div class="paper">
+  <span class="badge badge--acl">ACL 2026 Main</span>
+  <a class="paper-title" href="https://arxiv.org/abs/2508.06098">MeanAudio: Fast and Faithful Text-to-Audio Generation with Mean Flows</a>
+  <span class="paper-authors">Xiquan Li<sup>*</sup>, <strong>Junxi Liu</strong><sup>*</sup>, Yuzhe Liang, Zhikang Niu, Wenxi Chen, Xie Chen</span>
+  <span class="paper-links"><a href="https://arxiv.org/abs/2508.06098">paper</a><a href="https://github.com/xiquan-li/MeanAudio">code</a><a href="https://meanaudio.github.io/">demo</a></span>
+  <p class="paper-note">Single-step text-to-audio via MeanFlow &mdash; RTF 0.013 on one RTX 3090, a 100x speedup over diffusion-based systems.</p>
+</div>
 
-**[MeanAudio: Fast and Faithful Text-to-Audio Generation with Mean Flows](https://arxiv.org/abs/2508.06098)**  
-Xiquan Li\*, **Junxi Liu\***, Yuzhe Liang, Zhikang Niu, Wenxi Chen, Xie Chen  
-***ACL*, 2026 (Main)**  
-[paper](https://arxiv.org/abs/2508.06098) / [code](https://github.com/xiquan-li/MeanAudio) / [demo](https://meanaudio.github.io/)
+<div class="paper">
+  <span class="badge badge--arxiv">arXiv 2026</span>
+  <a class="paper-title" href="https://arxiv.org/abs/2606.09098">HoliDubber: Holistic Video Dubbing for Complex Acoustic Scenes via Text-Guided Audio Synthesis</a>
+  <span class="paper-authors">Wenhao Guan, Yifan Duan, <strong>Junxi Liu</strong>, Yu Gu, Feng Dang, Kaidi Wang, Qingyang Hong, Lin Li, Xie Chen</span>
+  <span class="paper-links"><a href="https://arxiv.org/abs/2606.09098">paper</a></span>
+  <p class="paper-note">Dubbing that rebuilds the whole acoustic scene, not just the speech track.</p>
+</div>
 
-A fast and faithful text-to-audio generator that incorporates MeanFlow for single-step synthesis, reaching an RTF of 0.013 on a single RTX 3090.
+<div class="paper">
+  <span class="badge badge--arxiv">arXiv 2026</span>
+  <a class="paper-title" href="https://arxiv.org/abs/2606.07397">Audio-Oscar: A Multi-Agent System for Complex Audio Scene Generation, Orchestration, and Refinement</a>
+  <span class="paper-authors">Yifan Duan, Qixiang Xu, Hengtao Wu, Zhanxun Liu, Wenhao Guan, <strong>Junxi Liu</strong>, Ziyang Ma, Kelu Xu, Xie Chen</span>
+  <span class="paper-links"><a href="https://arxiv.org/abs/2606.07397">paper</a></span>
+  <p class="paper-note">Agents that generate, arrange, and iteratively refine long multi-event soundscapes.</p>
+</div>
 
-**[HoliDubber: Holistic Video Dubbing for Complex Acoustic Scenes via Text-Guided Audio Synthesis](https://arxiv.org/abs/2606.09098)**  
-Wenhao Guan, Yifan Duan, **Junxi Liu**, Yu Gu, Feng Dang, Kaidi Wang, Qingyang Hong, Lin Li, Xie Chen  
-*arXiv preprint*, 2026  
-[paper](https://arxiv.org/abs/2606.09098)
+<div class="paper">
+  <span class="badge badge--arxiv">arXiv 2026</span>
+  <a class="paper-title" href="https://arxiv.org/abs/2602.08794">MOVA: Towards Scalable and Synchronized Video-Audio Generation</a>
+  <span class="paper-authors">SII-OpenMOSS Team, including <strong>Junxi Liu</strong></span>
+  <span class="paper-links"><a href="https://arxiv.org/abs/2602.08794">paper</a></span>
+  <p class="paper-note">Joint video-audio generation that stays in sync as it scales.</p>
+</div>
 
-Video dubbing that reconstructs whole acoustic scenes rather than speech alone.
-
-**[Audio-Oscar: A Multi-Agent System for Complex Audio Scene Generation, Orchestration, and Refinement](https://arxiv.org/abs/2606.07397)**  
-Yifan Duan, Qixiang Xu, Hengtao Wu, Zhanxun Liu, Wenhao Guan, **Junxi Liu**, Ziyang Ma, Kelu Xu, Xie Chen  
-*arXiv preprint*, 2026  
-[paper](https://arxiv.org/abs/2606.07397)
-
-A multi-agent system that generates, orchestrates, and iteratively refines complex audio scenes.
-
-**[MOVA: Towards Scalable and Synchronized Video-Audio Generation](https://arxiv.org/abs/2602.08794)**  
-SII-OpenMOSS Team, including **Junxi Liu**  
-*arXiv preprint*, 2026  
-[paper](https://arxiv.org/abs/2602.08794)
-
-Scalable joint video-audio generation with tight temporal synchronization.
-
-**[MMAE: A Massive Multitask Audio Editing Benchmark](https://arxiv.org/abs/2606.07229)**  
-Ziyang Ma, Ruiqi Yan, Ruiyang Xu, et al., including **Junxi Liu**  
-*arXiv preprint*, 2026  
-[paper](https://arxiv.org/abs/2606.07229)
-
-A large-scale benchmark for evaluating audio editing systems across many task types.
-
-\* denotes equal contribution.
+<div class="paper">
+  <span class="badge badge--arxiv">arXiv 2026</span>
+  <a class="paper-title" href="https://arxiv.org/abs/2606.07229">MMAE: A Massive Multitask Audio Editing Benchmark</a>
+  <span class="paper-authors">Ziyang Ma, Ruiqi Yan, Ruiyang Xu, et al., including <strong>Junxi Liu</strong></span>
+  <span class="paper-links"><a href="https://arxiv.org/abs/2606.07229">paper</a></span>
+  <p class="paper-note">A large-scale benchmark for audio editing across many task types under one protocol.</p>
+</div>
 
 ## Education
 
