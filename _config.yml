@@ -248,8 +248,8 @@ defaults:
       path: ""
       type: pages
     values:
-      layout: single
-      author_profile: true
+      layout: minimal
+      author_profile: false
   # _teaching
   - scope:
       path: ""
@@ -264,10 +264,10 @@ defaults:
       path: ""
       type: publications
     values:
-      layout: single
-      author_profile: true
-      share: true
-      comments: true
+      layout: minimal
+      author_profile: false
+      share: false
+      comments: false
   # _portfolio
   - scope:
       path: ""
